@@ -56,7 +56,11 @@ const existingCartItemIndex = state.items.findIndex(
         items: updatedItems,
         totalPrice: UpdatedTotalPrice,
       }
-    }  
+    }
+
+if(action.type === 'CLEAR'){
+    return defaultCartState;
+}
   return defaultCartState;
 };
 
@@ -75,12 +79,17 @@ const CartProvider = (props) => {
     dispatchCartState({ type: "REMOVE_ITEM", id: id });
   };
 
+  const clearCartHandler = ()=>{
+    dispatchCartState({type: 'CLEAR'});
+  }
+
   // Defining a helper to house all our states and actions
   const cartContextHandler = {
     items: cartState.items,
     totalPrice: cartState.totalPrice,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHanlder,
+    clearCart: clearCartHandler
   };
 
   return (

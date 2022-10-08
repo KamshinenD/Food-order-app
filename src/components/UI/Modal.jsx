@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import Cart from '../Cart/Cart';
 import styles from './Modal.module.css';
 
